@@ -1,4 +1,4 @@
-package com.connectin.exceptions.account;
+package com.connectin.authenticate.exceptions.account;
 
 public class AccountException extends Exception {
 

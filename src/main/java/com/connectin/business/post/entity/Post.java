@@ -1,24 +1,5 @@
 package com.connectin.business.post.entity;
 
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import com.connectin.business.comments.entity.Comment;
 import com.connectin.business.feed.entity.Feed;
 import com.connectin.business.likes.entity.Likes;
@@ -26,13 +7,18 @@ import com.connectin.business.user.entity.User;
 import com.connectin.common.entity.Category;
 import com.connectin.constants.Visibility;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 @Table
 @Entity(name = "post")
 public class Post implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    
+
+
     @Id
     @Column(name = "id")
     private int id;
@@ -73,6 +59,8 @@ public class Post implements Serializable {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User ownerId;
+    @Column(name = "text")
+    private String text;
 
     public User getOwnerId() {
         return ownerId;
@@ -81,9 +69,6 @@ public class Post implements Serializable {
     public void setOwnerId(User ownerId) {
         this.ownerId = ownerId;
     }
-
-    @Column(name = "text")
-    private String text;
 
     public Feed getFeedId() {
         return feedId;

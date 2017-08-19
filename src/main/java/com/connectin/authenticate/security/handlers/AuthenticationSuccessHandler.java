@@ -2,6 +2,7 @@ package com.connectin.authenticate.security.handlers;
 
 import com.connectin.authenticate.security.tokenmanager.service.TokenAuthenticationService;
 import com.connectin.config.ApplicationConfig;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;

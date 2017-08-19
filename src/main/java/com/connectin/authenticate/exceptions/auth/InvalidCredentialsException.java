@@ -1,4 +1,4 @@
-package com.connectin.exceptions.auth;
+package com.connectin.authenticate.exceptions.auth;
 
 public class InvalidCredentialsException extends Exception {
 

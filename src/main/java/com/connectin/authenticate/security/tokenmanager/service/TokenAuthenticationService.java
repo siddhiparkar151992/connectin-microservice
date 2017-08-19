@@ -4,6 +4,7 @@ package com.connectin.authenticate.security.tokenmanager.service;
 import com.connectin.authenticate.entity.Role;
 import com.connectin.authenticate.entity.User;
 import com.connectin.authenticate.security.userdetails.UserAuthentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,8 @@ public class TokenAuthenticationService {
     private static final String AUTH_HEADER_NAME = "X-AUTH-TOKEN";
     private static final long TEN_DAYS = 1000 * 60 * 60 * 24 * 10;
 
-    private final TokenHandler tokenHandler = new TokenHandler();
+
+    private TokenHandler tokenHandler = new TokenHandler();
 
 
     public void addAuthentication(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {

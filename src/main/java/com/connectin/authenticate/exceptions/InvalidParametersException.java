@@ -1,4 +1,4 @@
-package com.connectin.exceptions;
+package com.connectin.authenticate.exceptions;
 
 public class InvalidParametersException extends Exception {
 

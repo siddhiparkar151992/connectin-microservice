@@ -2,11 +2,12 @@ package com.connectin.authenticate.service;
 
 import com.connectin.authenticate.dao.IAuthenticationDao;
 import com.connectin.authenticate.entity.AuthErrors;
-import com.connectin.authenticate.entity.user.UserCredentials;
 import com.connectin.authenticate.util.exceptions.InvalidCredentialsException;
+import com.connectin.business.user.entity.UserCredentials;
 import com.connectin.exceptions.account.AccountException;
 import com.connectin.utils.ObjectUtil;
 import com.connectin.utils.StringUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

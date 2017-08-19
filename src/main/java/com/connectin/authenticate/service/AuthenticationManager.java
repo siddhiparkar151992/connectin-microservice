@@ -1,14 +1,16 @@
 package com.connectin.authenticate.service;
 
-import com.connectin.authenticate.entity.AuthErrors;
-import com.connectin.authenticate.entity.user.UserCred;
-import com.connectin.authenticate.entity.user.UserCredentials;
-import com.connectin.authenticate.util.exceptions.InvalidCredentialsException;
-import com.connectin.security.encypt.Encryptor;
+import java.util.HashMap;
+
+import com.connectin.business.security.encryption.Encryptor;
+import com.connectin.business.user.entity.UserCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+
+import com.connectin.authenticate.entity.AuthErrors;
+import com.connectin.authenticate.entity.user.UserCred;
+import com.connectin.authenticate.util.exceptions.InvalidCredentialsException;
 
 @Service("authService")
 public class AuthenticationManager implements IAuthenticator {

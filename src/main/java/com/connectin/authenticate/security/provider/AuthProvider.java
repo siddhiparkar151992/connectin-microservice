@@ -2,11 +2,12 @@ package com.connectin.authenticate.security.provider;
 
 import com.connectin.authenticate.entity.Role;
 import com.connectin.authenticate.entity.User;
+
 import com.connectin.authenticate.entity.user.UserCred;
-import com.connectin.authenticate.entity.user.UserCredentials;
 import com.connectin.authenticate.security.tokenmanager.service.TokenHandler;
 import com.connectin.authenticate.service.IAuthenticator;
 import com.connectin.authenticate.util.exceptions.InvalidCredentialsException;
+import com.connectin.business.user.entity.UserCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +16,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -22,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-@Service("authProvider")
+@Component("authProvider")
 public class AuthProvider implements AuthenticationProvider {
 
     @Autowired
@@ -31,7 +33,7 @@ public class AuthProvider implements AuthenticationProvider {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    private final TokenHandler tokenHandler = new TokenHandler();
+    private TokenHandler tokenHandler = new TokenHandler();
     public HashMap<String, UserCredentials> authenticate(String id, String password) throws InvalidCredentialsException, Exception {
         return authService.login(new UserCred(id, password));
     }
@@ -56,7 +58,7 @@ public class AuthProvider implements AuthenticationProvider {
 
     }
 
-    public Authentication authenticateUser(String username, String password) throws AuthenticationException {
+    public String authenticateUser(String username, String password) throws AuthenticationException {
 
         try {
             HashMap<String, UserCredentials> userData = authenticate(username, password);
@@ -65,7 +67,7 @@ public class AuthProvider implements AuthenticationProvider {
             Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
             String token = tokenHandler.createTokenForUser(
                     new User(username, (List<Role>) authorities));
-            return new UsernamePasswordAuthenticationToken(user, password, authorities);
+            return token;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

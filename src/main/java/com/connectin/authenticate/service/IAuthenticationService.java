@@ -1,7 +1,7 @@
 package com.connectin.authenticate.service;
 
-import com.connectin.authenticate.entity.user.UserCredentials;
 import com.connectin.authenticate.util.exceptions.InvalidCredentialsException;
+import com.connectin.business.user.entity.UserCredentials;
 import com.connectin.exceptions.account.AccountException;
 
 
